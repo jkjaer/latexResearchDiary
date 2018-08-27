@@ -1,5 +1,4 @@
-# latexResearchDiary
-A LaTeX-based and collaborative research diary
+# latexResearchDiary - A LaTeX-based and collaborative research diary
 
 How often have you returned to an old task wondering what you were thinking the last time you worked on it? Did I really write this piece of code? How did I connect the DUT to the measurement equipment? What did I search for in Google when I found that interesting paper? What did I name that file? Where did I place that piece of paper with the magnificent derivation? Unfortunately, I am guilty of asking myself these and many other questions way too often. Yes, I tend to forget things. Even important things. Things which I am sure that the future me will remember, but he often disappoints me.
 
