@@ -1,0 +1,12 @@
+% mainfile: ../../../../master.tex
+\subsection{Conditional Compilation for Particular Task Labels}
+\label{task:20140817_jkn0}
+\tags{building,development}
+\authors{jkn}
+\files{newBuild.py}
+%\persons{}
+I have implemented conditional compilation for task labels. Thus, the diary can now be compiled for only a few tasks by running
+\begin{lstlisting}[language=bash]
+python newBuild.py all all "20140315_1,20140817_0"
+\end{lstlisting}
+

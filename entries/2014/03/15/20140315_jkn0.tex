@@ -1,0 +1,195 @@
+% mainfile: ../../../../master.tex
+\subsection{Aim and Usage of the Work Diary}
+\label{task:20140315_jkn0}
+\tags{userguide,tasks,tags}
+\authors{jkn}
+\files{addTask.py,default.tpl.tex,newTag.py,changeTag.py,newAuthor.py,changeAuthor.py,newBuild.py}
+%\persons{}
+
+How often have you returned to an old task wondering what you were thinking the last time you worked on it? Did I really write this piece of code? How did I connect the DUT to the measurement equipment? What did I search for in Google when I found that interesting paper? What did I name that file? Where did I place that piece of paper with the magnificent derivation? Unfortunately, I am guilty of asking myself these and many other questions way too often. Yes, I tend to forget things. Even important things. Things which I am sure that the future me will remember, but he often disappoints me.
+
+I am also guilty of being a happy \LaTeXe\ user \cite{Madsen2010,Mittelbach2005,Oetiker2010}. And friendly - to myself at least. Therefore, I decided to create the present \LaTeXe-based work diary to the forgetful future me. The diary resembles a good old lab journal, but it is hopefully also much more powerful while still being fairly simple to use. The focus should be on the work - not on managing a diary - because the current me hates bureaucracy.
+
+Sure sure, that all sounds great and all, but how do you manage the diary in two years from now when it consists of 1000 pages? What about in 10 years? Can you write confidential information in the diary and still share your work with an external partner? Yes, you can! Thanks to a tagging system, the diary can be build conditionally on these tags or on the time. If I remember it, I will say much more about this later.
+
+The work diary can also be used as a collaborative tool for multiple forgetful people working on the same project. When used in this way, the diary is a project diary which serves as the documentation of the project.
+
+All right. Enough introduction. Now let us discuss how you actually use this diary.
+
+\subsubsection*{An Example}
+Both the current and future me like to learn through examples so therefore I better start with one. One cold morning, Jon Snow shows up at work at Castle Black. He turns on his computer while he tries to recall what he was supposed to do this morning before the pigeon pie is served for lunch. It annoys him since he often finds himself forgetting things. Suddenly he remembers that interesting diary template he accidentally stumbled upon yesterday evening while he was searching for methods to work smarter and more efficiently. Jon quickly looks at the photo of Ygritte next to his screen and decides to try this template. He downloads it and copies the {\tt diary} folder in the zip-archive to the location {\tt c:\textbackslash path\textbackslash to\textbackslash the\textbackslash diary}.
+
+``Literature review'', he finally recalls, ``I have to look into how people build and maintain a really tall wall. My partner, Stark Industries, is really interested in this \textit{Tall Wall} project.'' Jon takes a sip of his Westerosi coffee, flexes his sword hand, hits the Windows button, writes {\tt cmd} in the search field to launch the terminal, and changes the current directory to the diary folder while he silently complains about that the Night's Watch IT policy forces him to use Windows. For a moment he looks angry at the blinking cursor next to the path
+\begin{lstlisting}[language=bash]
+c:\path\to\the\diary>
+\end{lstlisting}
+Then he writes
+\begin{lstlisting}[language=bash]
+python addTask.py "tallWall, stark" "Literature Review on Building Tall Walls" js
+\end{lstlisting}
+Since this is the first time Jon adds an entry to the diary, he is prompted for tag titles for the unknown {\tt tallWall} and {\tt stark} tags. He writes {\tt The Tall Wall Project} and {\tt Stark Industries}. Moreover, this is also the first time that he has provided the optional author initials {\tt js} after the {\tt addTask.py} Python script so he also fills in his name and email address. Immediately after filling in the email address, his favourite \LaTeXe\ editor is launched displaying a file with the following content.
+\begin{lstlisting}[language={[LaTeX]TeX}]
+% mainfile: ../../../../master.tex
+\subsection{Literature Review on Building Tall Walls}
+\label{task:20140315_js0}
+\tags{tallWall, stark}
+\authors{js}
+%\files{}
+%\persons{}
+\end{lstlisting}
+``Great'', he thinks and starts reading and typing in all his findings and sources on how to build and maintain a really tall wall. A few hours later he has finished his literature review - and his stomach is rumbling, but before he goes to lunch he wants to compile the diary. To do that, Jon first writes in the terminal 
+\begin{lstlisting}[language=bash]
+python newBuild.py all
+\end{lstlisting}
+to create all the necessary build files for \LaTeXe\ to assemble the diary. Then he compiles the diary as he would normally compile a \LaTeXe\ document.
+
+The above was a simple little example of how the diary can be used. Below you will find the much more elaborate and boring documentation. Do not forget to read the list of useful tips at the end of the documentation.
+
+\subsubsection*{Organisation}
+The work diary is basically a book of ever increasing size and organised by time. In this book, a year is a part, a month is a chapter, and a day is a section. Each day is comprised of a number of tasks. These tasks are all you should care about, because \LaTeXe\ handles the rest.
+
+\subsubsection*{Tasks}
+So what do you need to know about these tasks? Well, a new task is created by running the following Python script from a command line\footnote{On unix-like systems, you can write the shorter {\tt ./addTask.py} instead of {\tt python addTask.py}. Moreover, you can also use single quotes instead of double quotes.}.
+\begin{lstlisting}[language=bash]
+python addTask.py "tallWall, stark" "Literature Review on Building Tall Walls"
+\end{lstlisting}
+This automatically creates a new task in a separate file with the title \textit{Literature Review on Building Tall Walls} and the tags {\tt tallWall} and {\tt stark}. The file is automatically placed in the {\tt entries} folders which is organised in a year, month, and day structure. Moreover, the newly created file is opened in your default \LaTeXe\ editor. The Python script {\tt addTask.py} takes five input variables of which three are optional.
+\begin{description}
+  \item["tagA, tagB, tagC"] The first input variable is required and contains a comma separated list of valid tags. I will say more about these tags later.
+  \item["Task Title"] The second input variable is also required and is the title of the task.
+  \item[author initials] The third input variable is optional and specifies the author initials. If not set or set to {\tt ""}, no author is used. This will be described in more detail later.
+  \item[template] The fourth input variable is also optional and generates the task from a particular template such as a meeting or an agenda. If not set or set to {\tt ""}, the default template is used. The creation of new templates is described later.
+  \item[YYYY-MM-DD] The fifth input variable is also an optional input variable which specifies the date of the task. If not set, today is used as the date.
+\end{description}
+
+If you actually ran the Python file above with the same input parameters, a new file should open in your default \LaTeXe\ editor with the following content.
+\begin{lstlisting}[language={[LaTeX]TeX}]
+% mainfile: ../../../../master.tex
+\subsection{Literature Review on Building Tall Walls}
+\label{task:20140315_0}
+\tags{tallWall, stark}
+%\authors{}
+%\files{}
+%\persons{}
+\end{lstlisting}
+The first line enables synctex forward and inverse search support for my editor of choice (gedit) and possible also for other editors. If your editor does not need this line, it can be safely ignored or deleted in the template file {\tt default.tpl.tex} located in the {\tt template folder}. The second line simply prints the task title as a subsection. The third line is a unique label of the task so that is can be referred to from other tasks. The fourth line in the opened file contains the comma separated list of tags which will be described later. The fifth, sixth, and seventh lines are commented out by default, but they can be used to specify the authors of the task entry, which files/folders are created or changed in the task, and which persons are also involved in the task. \LaTeXe\ automatically generates separate indices in the work diary from the list of authors, files, and persons. These indices can be used to quickly find who wrote which entries and where in the diary you worked on a particular file or had a meeting with a particular person.
+
+\subsubsection*{Tags}
+Aside from being based on \LaTeXe, the tag list is really the most compelling feature of the present work diary. It provides you with two powerful possibilities.
+\begin{itemize}
+  \item An index is generated for the tags so that tasks labelled with one particular tag can quickly be found in the work diary.
+  \item The work diary can be compiled conditioned on just one or a few tags. Suppose, for example, that you work on various projects with multiple external partners. If one of these partners (partner A, say) wants to see what you have been doing on the project, you probably do not want to send them the entire diary. Instead you can compile your work diary only with the tasks labelled by the {\tt partnerA} tag. Another usage of the tag-dependent compilation is that you can quickly get an overview over previous work labelled with the same tag. I will say more about conditional compilation later.
+\end{itemize}
+Before a tag can be used, it must be defined and given a title. This is easily done by running the following python script.
+\begin{lstlisting}[language=bash]
+python newTag.py tag "Title of the tag"
+\end{lstlisting}
+The tag should be a short id which can only contain letters (a-zA-Z) and numbers (0-9). The tag title is a longer description. Both the tag and its title is shown in the margin next to a task. Moreover, they can also be found in the index. Tags can also be renamed by running the following python script.
+\begin{lstlisting}[language=bash]
+python changeTag.py oldTag newTag "New title of the tag"
+\end{lstlisting}
+When a tag is renamed, the entire diary is updated with the new name. Finally, you can always get a list of all tags in the database by writing
+\begin{lstlisting}[language=bash]
+python newTag.py --help
+\end{lstlisting}
+or
+\begin{lstlisting}[language=bash]
+python newTag.py -h
+\end{lstlisting}
+
+\subsubsection*{Conditional Compilation}
+So how do you compile the work diary for just one or a few tags? You simple run the following python script.
+\begin{lstlisting}[language=bash]
+python newBuild.py "tagA,tagB" "dateA,dateB" "taskLabel1,taskLabel2"
+\end{lstlisting}
+When this python script is run, a build file and a tag dictionary are made so that the next time \LaTeXe\ compiles the diary, only the relevant tasks are kept. If no input parameters are given, the default build file contains every task from the last 90 days. If you want to compile the diary for just 2014, you could write
+\begin{lstlisting}[language=bash]
+python newBuild.py all 2014
+\end{lstlisting}
+If you want to compile the diary for just March and April 2014, you could write
+\begin{lstlisting}[language=bash]
+python newBuild.py all "2014-03, 2014-04"
+\end{lstlisting}
+If you want to compile the diary for only some specific task labels, you can write
+\begin{lstlisting}[language=bash]
+python newBuild.py all all "20140315_0,20140316_0"
+\end{lstlisting}
+And so on. Aside from specifying dates and tags, you can also write
+\begin{lstlisting}[language=bash]
+python newBuild.py all
+\end{lstlisting}
+to include everything in your diary. A few years from now, however, compiling the diary for this build profile might be a time consuming process.
+
+You can also exclude particular tags by preceding the tag name by an exclamation mark. If you for example have defined a tag with the tage name confidential, you can compile a non-confidential version of your diary by writing
+\begin{lstlisting}[language=bash]
+python newBuild.py "all,!confidential" all
+\end{lstlisting}
+
+\subsubsection*{Multiple Authors}
+When multiple authors are working simultaneously on the same diary, every new task should have at least one author attached to it. This makes it easier for the authors to see which person completed which task and is also essential in order to avoid file name conflicts. A task by the author {\tt js} can be created as
+\begin{lstlisting}[language=bash]
+python addTask.py "tagA,tagB" "Task title" js
+\end{lstlisting}
+Before an author can be attached to a task, he or she must be in the author database. To add the author (e.g., Jon Snow (js@nightswatch.wes) with initials js) to the author database, simply run
+\begin{lstlisting}[language=bash]
+python newAuthor.py js "Jon Snow" "js@nightswatch.wes"
+\end{lstlisting}
+An author can also be changed by running
+\begin{lstlisting}[language=bash]
+python changeAuthor.py oldInitials newInitials "New name" "New email address"
+\end{lstlisting}
+The last two options are optional. If not provided, only the initials will be updated.
+
+\subsubsection*{New templates}
+New templates can also easily be added by creating them in the {\tt template} folder. A new template such as a meeting agenda can be added by using the \textit{default} template as a starting point. A new template should have the file name {\tt <someName>.tpl.tex}. A new task can be created from a template by writing, e.g.,
+\begin{lstlisting}[language=bash]
+python addTask.py "tagA,tagB" "Task title" "" myTemplate
+\end{lstlisting}
+This will create a task based on the template {\tt myTemplate.tpl.tex}. When you create a new template, make sure that it is saved with the UTF-8 encoding. By default, all Python script assumes that this is the case.
+
+\subsubsection*{System Requirements}
+You need to have a \LaTeXe\ distribution and Python installed. The diary has been developed and tested on a 64 bit Ubuntu 12.04.4-12.04.5 system with the versions of Python (2.7.3 and 3.2.3) and TexLive (2009-15) from the repositories installed. Moreover, all unit tests also pass under a 32 bit Windows 7 with TexLive 2014, Python 2.7.8, and Python 3.4.1 installed (remember to add Python to the path when you install it). I do not have a Mac so I have not tested the diary on OSX. By default, the various operating systems use different encoding for standard text files such as {\tt .tex} files. To avoid problems with special characters such as the Danish æ,ø, and å, I have therefore decided that all files are created and read with the UTF-8 encoding. I you observe any strange problems when trying to compile the diary, a file saved in the wrong encoding might be the cause.
+
+\subsubsection*{Compiling the Diary}
+When I compile the diary, I run the following commands.
+\begin{lstlisting}[language=bash]
+pdflatex -shell-escape -file-line-error -synctex=1 master.tex
+bibtex master.aux
+splitindex master.idx
+pdflatex -shell-escape -file-line-error -synctex=1 master.tex
+pdflatex -shell-escape -file-line-error -synctex=1 master.tex
+\end{lstlisting}
+You can find these commands in the Makefile which you can use on Linux.
+
+\subsubsection*{Some Useful Tips}
+Here is a totally random collection of useful tips.
+\begin{enumerate}
+    \item \textbf{Installing  Python under Windows:}\newline
+    Installing Python under Windows as quite easy. Just download the latest version and double click on it to install it. Remember, though, to enable the \textit{Add python.exe to Path} check box during installation!
+    \item \textbf{A Project Diary and Subversion:}\newline
+    When the diary is used by multiple people, I strongly recommend that a version control system such as Subversion or Git is used to manage the diary. In fact, I also recommend this if the diary is just used by a single person. To avoid too many conflict, pay attention to the following.
+    \begin{itemize}
+        \item Since the tag and author database cannot be merged, the users should remember to
+        \begin{itemize}
+            \item update their local copy of it before adding a tag or author to the database
+            \item commit their local copy of the database to the main repository immediately after adding a new author or tag to it.
+        \end{itemize}
+        \item When the first task of the day is created, new folders are created in the entries directory. If another user has already done the same and committet this to the central repository, SVN (not git) will complain on the next run of
+\begin{lstlisting}[language=bash]
+svn update
+\end{lstlisting}     
+        that \textit{an unversioned directory of the same name already exists}. This error can be overridden by running 
+\begin{lstlisting}[language=bash]
+svn update --force
+\end{lstlisting}
+    Be careful, though, since this will overwrite any local changes since the last commit. A better solution is to
+        \begin{itemize}
+            \item update your local repository immediately before creating your first entry of the day
+            \item commit your local repository immediately after creating your first entry of the day.
+        \end{itemize}
+        If all users do this, nearly all conflicts should be avoided.
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection*{Anything else?}
+Nope! Or not that I can think of at the moment. To start your own work/project diary, just copy the contest of the diary folder in the zip archive you have downloaded. As I claimed earlier, the diary should be very simple to use. If you lack any functionality, you are very welcome to change the code as you see fit.

@@ -1,0 +1,11 @@
+20130110_0: testTag1, testTag3
+20130110_1: testTag2, testTag3
+20131102_0: testTag3, testTag5
+20131102_1: testTag4
+20131122_shj0: testTag1
+20140116_0: testTag1
+20140116_1: testTag2, testTag5
+20140116_2: testTag2
+20140212_jkn0: testTag1, testTag4
+
+

@@ -1,0 +1,22 @@
+% mainfile: ../../../../master.tex
+\subsection{Python 3 Compatibility}
+% The part of the label after the colon must match the file name. Otherwise,
+% conditional compilation based on task labels does NOT work.
+\label{task:20140901_jkn0}
+\tags{development}
+\authors{jkn}
+\files{addTask.py,newBuild.py,newTag.py,newAuthor.py,changeTag.py,changeAuthor.py}
+%\persons{}
+I have updated all the Python scripts so that they now work with Python 2.X and 3.X. I had to change three things to make all the scripts work with Python 3.X.
+\begin{itemize}
+    \item The print statement has been changed from
+\begin{lstlisting}[language=python]
+print "Some text to print."
+\end{lstlisting}
+to
+\begin{lstlisting}[language=python]
+print("Some text to print.")
+\end{lstlisting}
+    \item All strings are stored in UTF-8 in Python 3 so the encoding and decoding, which is used in Python 2 to convert between byte strings and unicode strings, is not necessary in Python 3.
+    \item The {\tt raw\_input()} function is changed to {\tt input()} in Python 3. 
+\end{itemize}

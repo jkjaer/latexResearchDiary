@@ -1,0 +1,10 @@
+% mainfile: ../../../../master.tex
+\subsection{Python 3 and Windows Compatibility}
+% The part of the label after the colon must match the file name. Otherwise,
+% conditional compilation based on task labels does NOT work.
+\label{task:20140903_jkn0}
+\tags{development}
+\authors{jkn}
+\files{newBuild.py,addTask.py,changeAuthor.py,changeTag.py}
+%\persons{}
+I have discovered that many of the problems that I observed with cross-platform compatibility were causes by different encoding of files. Therefore, I have decided to store and read all files with the UTF-8 encoding using the {\tt io} module. In addition to updating the Python scripts with this, I have also updated the preamble and the user guide with a warning about changing the encoding.

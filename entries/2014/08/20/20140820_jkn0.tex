@@ -1,0 +1,10 @@
+% mainfile: ../../../../master.tex
+\subsection{Including Author Information in the Diary}
+% The part of the label after the colon must match the file name. Otherwise,
+% conditional compilation based on task labels does NOT work.
+\label{task:20140820_jkn0} 
+\tags{development,author}
+\authors{jkn}
+\files{addTask.py}
+%\persons{}
+The Python script for adding a task has been updated so that author initials are now validated against the author initials in the author database. Moreover, multiple author initials can now be specified as a comma separated list from the command line when a task is created. However, only the first author initials is used in the file name and the task label.

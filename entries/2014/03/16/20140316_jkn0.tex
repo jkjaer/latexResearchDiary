@@ -1,0 +1,27 @@
+% mainfile: ../../../../master.tex
+\subsection{Automatic Generation of Tasks from Templates}
+\label{task:20140316_jkn0}
+\tags{development,tasks}
+\authors{jkn}
+\files{addTask.py}
+%\persons{}
+As described in yesterday's user guide, a Python script should be written for generating and opening a new task in the user's default \LaTeXe\ editor. The script should do the following.
+\begin{enumerate}
+  \item The input parameters must be validated and, if not provided, the optional input parameters must be set to their default values. The default is today for the date, empty for the author, and
+\begin{lstlisting}[language={[LaTeX]TeX}]
+% mainfile: ../../../../master.tex
+\subsection{<task title>}
+\label{task:YYYYMMDD_IIIX}
+\tags{<tags>}
+%\authors{}
+%\files{}
+%\persons{}
+\end{lstlisting}
+for the template. The provided tags must be compared to the tag database. If not found, the user must be asked whether he/she wants to create it.
+  \item The missing year, month, and/or day directories must be created in the {\tt entries} folder.
+  \item The task index corresponding to the date must be found and a file name must be generated. The structure of a file name for a task is {\tt YYYYMMDD\_IIIX.tex} where {\tt III} are the author initials (if any) and {\tt X} is the task index. The author initials is added to the file name to prevent a possible conflict when multiple authors are working on the same diary.
+  \item The task file must be created and stored from the specified template.
+  \item The current active build configuration (if any) must be updated.
+  \item The created file must be opened in the default \LaTeXe\ editor.
+\end{enumerate}
+I have implemented everything in {\tt addTask.py} with the exception of tag validation and author validations. This functionality will be implemented when the Python scripts for creating new tags and new authors have been written. 

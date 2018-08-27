@@ -1,0 +1,12 @@
+% mainfile: ../../../../master.tex
+\subsection{Excluding Tags in a Build (Conditional Compilation)}
+\label{task:20140816_jkn0}
+\tags{development,building,tags}
+\authors{jkn}
+\files{newBuild.py}
+%\persons{}
+I have implemented conditional compilation for the excluding tags. An excluding tag is preceded by an exclamation mark such as in this example
+\begin{lstlisting}[language=bash]
+python newBuild.py "all,!confidential" all
+\end{lstlisting}
+It can be used to compile the diary for all entries except for one or more tags.

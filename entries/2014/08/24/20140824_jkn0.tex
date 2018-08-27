@@ -1,0 +1,19 @@
+% mainfile: ../../../../master.tex
+\subsection{Changing Tags}
+% The part of the label after the colon must match the file name. Otherwise,
+% conditional compilation based on task labels does NOT work.
+\label{task:20140824_jkn0}
+\tags{development,tags}
+\authors{jkn}
+\files{changeTag.py}
+%\persons{}
+The tag name or title can be changed by running the command
+\begin{lstlisting}[language=bash]
+python changeTag.py oldTag newTag "New title of the tag"
+\end{lstlisting}
+The Python script for doing this should do the following.
+\begin{enumerate}
+    \item The input parameters must be validated and, if not provided, the optional input parameter (the tag title) must be set to its default value (the old tag title). The old tag should be looked up in the database. If not found, the script should tell the user and abort.
+    \item The database should be updated with the new tag and the new tag title. If a new tag title is not set, the old tag title is kept.
+    \item All diary tasks must be scanned. If the old tag is found, it must be replaced by the new tag. The step can be omitted if the old and new tags are identical (only the tag title is changed).
+\end{enumerate}

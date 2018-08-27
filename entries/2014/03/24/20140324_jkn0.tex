@@ -1,0 +1,19 @@
+% mainfile: ../../../../master.tex
+\subsection{Creating a New Build (Conditional Compilation)}
+\label{task:20140324_jkn0}
+\tags{development, building}
+\authors{jkn}
+\files{newBuild.py}
+%\persons{}
+As described in the user guide in task~\ref{task:20140315_jkn0}, it should be possible to compile the diary only for specific tags and dates. The Python script {\tt newBuild.py} should handle this by doing the following.
+\begin{enumerate}
+    \item The input parameters must be validated and default values for the non-specified parameters must be set.
+    \begin{itemize}
+        \item If no parameters are given, the default build of all tasks within the last 90 days should be selected.
+        \item If only tags are given, tasks labelled with these tags from all time should be selected.
+        \item If only dates are selected, all tags and tasks from these dates should be selected.
+    \end{itemize}
+    \item Scan all files in the entries directory satisfying the selected dates. Create a list of those tasks which are labelled with the selected tags and/or task labels. Moreover, retrieve all other tags as well.
+    \item From the list of extracted tags, create the tag dictionary in the {\tt buildFiles} folder.
+    \item From the list of selected tasks, create the task list file in the {\tt buildFiles} folder. In addition to including the filenames of the paths, the task list file must also format years, months, and days as parts, chapters, and sections.
+\end{enumerate}

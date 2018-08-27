@@ -1,0 +1,10 @@
+% mainfile: ../../../../master.tex
+\subsection{Correcting an Error in the Indices}
+% The part of the label after the colon must match the file name. Otherwise,
+% conditional compilation based on task labels does NOT work.
+\label{task:20150121_jkn0}
+\tags{bugFix}
+\authors{jkn}
+\files{preamble.tex, master.tex, diary.macro.tex}
+\persons{Christer Peter Volk}
+Christer pointed out that the hyperref links to the indices did not work anymore and that the indices were not at the same levels as the parts in the table of contents. It turned out that the cause of this was that the {\tt splitidx} package apparently does not work anymore with hyperref in newer versions of TexLive. Therefore, I have decided to use the {\tt imakeidx} package instead as it seems to work well. The newest version (1.0.4) contains this update to how the indices are generated.

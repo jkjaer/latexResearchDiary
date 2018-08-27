@@ -1,0 +1,31 @@
+\input{preamble.tex}
+\input{macros/diary.macro.tex}
+\input{buildFiles/tagDictionary.tex}
+\input{buildFiles/authorDictionary.tex}
+
+\title{Work Diary}
+\author{Jesper Kjær Nielsen\\Aalborg University\\Bang \& Olufsen}
+\date{Version 1.0.4\\Last compiled: \today}
+
+\begin{document}
+  \pagestyle{empty}
+  \pagenumbering{roman} %use arabic page numbering in the mainmatter
+  \maketitle
+  \cleardoublepage
+  \pdfbookmark[0]{Contents}{label:contents}
+  \tableofcontents
+  \cleardoublepage
+  \pdfbookmark[0]{Todos}{label:todos}
+  \listoftodos
+  \cleardoublepage
+  \pagestyle{fancy}
+  %mainmatter
+  \pagenumbering{arabic} %use arabic page numbering in the mainmatter
+  \input{buildFiles/taskList.tex}
+  
+  \printbibliography[heading=bibintoc]
+  \printindex[person]
+  \printindex[file]
+  \printindex[author]
+  \printindex[tag]
+\end{document}
