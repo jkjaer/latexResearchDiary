@@ -12,9 +12,9 @@ The work diary can also be used as a collaborative tool for multiple forgetful p
 Please start by reading [the documentation](latexResearchDiary/master.pdf) which has a nice introductory example. To start your own diary, please follow the following steps.
 1. Create a folder named, e.g., 'myDiary' somewhere in your filesystem
 2. Copy the entire content of the latexResearchDiary repos to that folder
-3. Delete all files in the folder 'buildFiles', all files in the folder 'entries', and the 'diaryDatabase.db' file in the database folder.
+3. Delete all files in the folder 'buildFiles', all files in the folder 'entries', and the 'diaryDatabase.db' file in the 'database' folder.
 4. Optionally, you can also delete the folder named 'tests' which contains all files used for the unit testing.
 
 ## Scope and limitations
-I made this LaTeX-based research diary back in 2014 and has used it ever since. Unfortunately, I am quite busy with many other things which means that I do not have time to refine it anymore. I have therefore decided to move everything to Github so that people with more time and skills than me can keep developing it.
+I made this LaTeX-based research diary back in 2014 and has used it ever since. Unfortunately, I am now quite busy with many other things which means that I do not have time to refine it anymore. I have therefore decided to move everything to Github so that people with more time and skills than me can keep developing it.
 
