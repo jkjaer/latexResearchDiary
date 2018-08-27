@@ -9,7 +9,7 @@ Sure sure, that all sounds great and all, but how do you manage the diary in two
 The work diary can also be used as a collaborative tool for multiple forgetful people working on the same project. When used in this way, the diary is a project diary which serves as the documentation of the project.
 
 ## How to get started
-Please start by reading [the documentation](latexResearchDiary/master.pdf) which has a nice introductory example. To start your own diary, please follow the following steps.
+Please start by reading [the documentation](master.pdf) which has a nice introductory example. To start your own diary, please follow the following steps.
 1. Create a folder named, e.g., 'myDiary' somewhere in your filesystem
 2. Copy the entire content of the latexResearchDiary repos to that folder
 3. Delete all files in the folder 'buildFiles', all files in the folder 'entries', and the 'diaryDatabase.db' file in the 'database' folder.
