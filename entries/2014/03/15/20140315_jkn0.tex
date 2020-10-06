@@ -90,15 +90,15 @@ python changeTag.py oldTag newTag "New title of the tag"
 \end{lstlisting}
 When a tag is renamed, the entire diary is updated with the new name. Finally, you can always get a list of all tags in the database by writing
 \begin{lstlisting}[language=bash]
-python newTag.py --help
+python newTag.py --list
 \end{lstlisting}
 or
 \begin{lstlisting}[language=bash]
-python newTag.py -h
+python newTag.py -l
 \end{lstlisting}
 
 \subsubsection*{Conditional Compilation}
-So how do you compile the work diary for just one or a few tags? You simple run the following python script.
+So how do you compile the work diary for just one or a few tags? You simply run the following python script.
 \begin{lstlisting}[language=bash]
 python newBuild.py "tagA,tagB" "dateA,dateB" "taskLabel1,taskLabel2"
 \end{lstlisting}
@@ -120,7 +120,7 @@ python newBuild.py all
 \end{lstlisting}
 to include everything in your diary. A few years from now, however, compiling the diary for this build profile might be a time consuming process.
 
-You can also exclude particular tags by preceding the tag name by an exclamation mark. If you for example have defined a tag with the tage name confidential, you can compile a non-confidential version of your diary by writing
+You can also exclude particular tags by preceding the tag name by an exclamation mark. If you for example have defined a tag with the tag name confidential, you can compile a non-confidential version of your diary by writing
 \begin{lstlisting}[language=bash]
 python newBuild.py "all,!confidential" all
 \end{lstlisting}
@@ -167,7 +167,7 @@ Here is a totally random collection of useful tips.
     \item \textbf{Installing  Python under Windows:}\newline
     Installing Python under Windows as quite easy. Just download the latest version and double click on it to install it. Remember, though, to enable the \textit{Add python.exe to Path} check box during installation!
     \item \textbf{A Project Diary and Subversion:}\newline
-    When the diary is used by multiple people, I strongly recommend that a version control system such as Subversion or Git is used to manage the diary. In fact, I also recommend this if the diary is just used by a single person. To avoid too many conflict, pay attention to the following.
+    When the diary is used by multiple people, I strongly recommend that a version control system such as Subversion or Git is used to manage the diary. In fact, I also recommend this if the diary is just used by a single person. To avoid too many conflicts, pay attention to the following.
     \begin{itemize}
         \item Since the tag and author database cannot be merged, the users should remember to
         \begin{itemize}
